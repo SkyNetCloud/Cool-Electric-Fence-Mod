@@ -58,7 +58,7 @@ public class BasicElectricFence extends Block {
         return fencePower;
     }
 
-
+        @Override
         public void entityInside(@Nullable BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
             if (state.getValue(ELECTRIC_POWER) > 0 && worldIn.getGameTime() % 8L == 0L) {
                 if (entityIn instanceof LivingEntity _entGetArmor) {
