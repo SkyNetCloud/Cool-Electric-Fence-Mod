@@ -3,6 +3,7 @@ package ca.skynetcloud.electricfencemod.block.fences;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -57,6 +59,7 @@ public class ElectricalCabinet extends Block {
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, SUPPLYING);
@@ -65,16 +68,8 @@ public class ElectricalCabinet extends Block {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         Vec3 offset = state.getOffset(world, pos);
-        switch ((Direction) state.getValue(FACING)) {
-            case SOUTH :
-            default :
-                return Shapes.or(box(0, 0, 0, 16, 16, 16), box(0, 0, 0, 16, 21, 16)).move(offset.x, offset.y, offset.z);
-            case NORTH :
-                return Shapes.or(box(0, 0, 0, 16, 16, 16), box(0, 0, 0, 16, 21, 16)).move(offset.x, offset.y, offset.z);
-            case EAST :
-                return Shapes.or(box(0, 0, 0, 16, 16, 16), box(0, 0, 0, 16, 21, 16)).move(offset.x, offset.y, offset.z);
-            case WEST :
-                return Shapes.or(box(0, 0, 0, 16, 16, 16), box(0, 0, 0, 16, 21, 16)).move(offset.x, offset.y, offset.z);
+        switch (state.getValue(FACING)) {
+            default : return Shapes.or(box(0, 0, 0, 16, 16, 16), box(0, 0, 0, 16, 21, 16)).move(offset.x, offset.y, offset.z);
         }
     }
 
