@@ -1,23 +1,18 @@
 package ca.skynetcloud.electricfencemod.datagen;
 
+import ca.skynetcloud.electricfencemod.Electricfencemod;
 import ca.skynetcloud.electricfencemod.init.BlockInit;
 import ca.skynetcloud.electricfencemod.init.TagsInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-
-public class ModTags extends BlockTagsProvider {
+public class ModBlockTags extends BlockTagsProvider {
 
 
-    public ModTags(DataGenerator p_126511_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-        super(p_126511_, modId, existingFileHelper);
+    public ModBlockTags(DataGenerator p_126511_, @Nullable ExistingFileHelper existingFileHelper) {
+        super(p_126511_, Electricfencemod.MODID, existingFileHelper);
     }
 
     @Override

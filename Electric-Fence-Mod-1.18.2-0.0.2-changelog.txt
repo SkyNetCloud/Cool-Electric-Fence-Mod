@@ -1,3 +1,4 @@
 Mod Build: 0.0.2 - May 6, 2022
   SkyNetCloud:
    Added Wrench Recipe
+   Added Blocks Tags (Not sure why I made this, but I did)

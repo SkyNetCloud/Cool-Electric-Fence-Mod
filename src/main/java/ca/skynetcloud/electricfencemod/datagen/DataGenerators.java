@@ -14,6 +14,9 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
             generator.addProvider(new ModRecipes(generator));
+            ModBlockTags blocktags = new ModBlockTags(generator, event.getExistingFileHelper());
+            generator.addProvider(blocktags);
+
         }
         if (event.includeClient()) {
 
