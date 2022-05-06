@@ -20,45 +20,42 @@ public class WrenchTool extends Item{
      super(new Item.Properties().stacksTo(1).tab(Electricfencemod.electricfencemodTab.MAIN));
  }
 
-
-
     @Override
-    public InteractionResult useOn(UseOnContext ctx)
-    {
+    public InteractionResult useOn(UseOnContext ctx) {
+        InteractionResult result = null;
         Level level = ctx.getLevel();
         BlockPos pos = ctx.getClickedPos();
         Player player = ctx.getPlayer();
-        if (!level.isClientSide && player != null)
-        {
+        if (!level.isClientSide && player != null) {
             BlockState target = level.getBlockState(pos);
             ItemStack stack = player.getMainHandItem();
 
-            if (stack.getItem() instanceof WrenchTool && player.isCrouching())
-            {
+            if (stack.getItem() instanceof WrenchTool && player.isCrouching()) {
                 Block block = target.getBlock();
-                if (removeIfValid(block, level, pos))
-                {
-                    if (block instanceof BasicElectricFence || block instanceof ElectricFenceGate || block instanceof ElectricalCabinet)
-                    {
+                if (removeIfValid(block, level, pos)) {
+                    if (block instanceof BasicElectricFence || block instanceof ElectricFenceGate || block instanceof ElectricalCabinet) {
                         if (!player.addItem(new ItemStack(block)))
                             Block.popResource(level, player.blockPosition(), new ItemStack(block));
-                        return InteractionResult.SUCCESS;
+                        result = InteractionResult.SUCCESS;
+                    } else {
+                        Block.popResource(level, pos, new ItemStack(target.getBlock()));
+                        result = InteractionResult.SUCCESS;
                     }
-                    Block.popResource(level, pos, new ItemStack(target.getBlock()));
-                    return InteractionResult.SUCCESS;
                 }
             }
         }
-        return super.useOn(ctx);
+        if (result == null) {
+            result = super.useOn(ctx);
+        }
+        return result;
     }
 
-    private boolean removeIfValid(Block block, Level world, BlockPos pos)
-    {
-        if (block instanceof BasicElectricFence || block instanceof ElectricFenceGate || block instanceof ElectricalCabinet)
-        {
+    private boolean removeIfValid(Block block, Level world, BlockPos pos) {
+        boolean result = false;
+        if (block instanceof BasicElectricFence || block instanceof ElectricFenceGate || block instanceof ElectricalCabinet) {
             world.removeBlock(pos, false);
-            return true;
+            result = true;
         }
-        return false;
+        return result;
     }
 }
