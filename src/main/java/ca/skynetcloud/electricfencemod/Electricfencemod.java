@@ -1,7 +1,7 @@
 package ca.skynetcloud.electricfencemod;
 
-import ca.skynetcloud.electricfencemod.init.BlockInit;
-import ca.skynetcloud.electricfencemod.init.ItemInit;
+import ca.skynetcloud.electricfencemod.world.level.block.BlockInit;
+import ca.skynetcloud.electricfencemod.world.item.ItemInit;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,7 +35,6 @@ public class Electricfencemod {
     //This used to be the PreInit
     private void setup(FMLCommonSetupEvent event) {
         LOGGER.info("Setup Method Registered (PreInit)");
-
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
