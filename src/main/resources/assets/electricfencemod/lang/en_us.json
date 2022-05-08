@@ -1,8 +1,12 @@
 {
 	"itemGroup.electricfencemod_main": "Electric Fence Mod",
 
-	"item.electric.wrench_tool": "wrench Tool",
+	"item.electricfencemod.wrench_tool": "wrench Tool",
 
+	"death.attack.electricfence": "%1$s was killed by Electric Shock",
+
+	"block.electricfencemod.electrical_cabinet": "Electrical Cabinet",
+	"block.electricfencemod.shock_flower": "Shock Follow",
 	"block.electricfencemod.electric_fence": "Electric Fence",
 	"block.electricfencemod.white_electric_fence": "White Electric Fence",
 	"block.electricfencemod.orange_electric_fence": "Orange Electric Fence",

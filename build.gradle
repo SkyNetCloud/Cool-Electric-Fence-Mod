@@ -111,8 +111,8 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.16'
 
-    runtimeOnly fg.deobf("curse.maven:worldedit-225608:3697298") // Adds the full JEI mod as a runtime dependency
-    runtimeOnly fg.deobf("curse.maven:jei-238222:3773518")
+    //runtimeOnly fg.deobf("curse.maven:worldedit-225608:3697298") // Adds the full JEI mod as a runtime dependency
+   runtimeOnly fg.deobf("curse.maven:jei-238222:3773518")
 }
 
 

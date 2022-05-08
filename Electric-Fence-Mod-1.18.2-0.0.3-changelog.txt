@@ -1,3 +1,6 @@
 Mod Build: 0.0.3 - May 8, 2022
   SkyNetCloud:
    Add Electrical Cabinet Recipes (Forgot about it sorry)
+   Added Shock Flower
+   Fix Electric Fenec should shock a lot when player is wearing a full iron armor
+   Fix the Texture of Lime Gate Door

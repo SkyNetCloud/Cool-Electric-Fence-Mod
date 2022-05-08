@@ -45,10 +45,10 @@ public class ModRecipes extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(BlockInit.electrical_cabinet.get())
                 .pattern("ibi")
-                .pattern("brb")
+                .pattern("bfb")
                 .pattern("ibi")
                 .define('i', Items.IRON_INGOT)
-                .define('r', Items.REDSTONE_BLOCK)
+                .define('f', ItemInit.shock_flower.get())
                 .define('b', Items.IRON_BLOCK)
                 .group("electricfencemod")
                 .unlockedBy("basepower", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.REDSTONE_BLOCK))

@@ -1,22 +1,27 @@
 package ca.skynetcloud.electricfencemod.world.level.block;
 
 
+import ca.skynetcloud.electricfencemod.Electricfencemod;
 import ca.skynetcloud.electricfencemod.init.DamageInit;
 import ca.skynetcloud.electricfencemod.init.SoundInit;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -67,13 +72,28 @@ public class BasicElectricFence extends Block {
                         if (worldIn.isRaining() && worldIn.canSeeSky(pos))  {
 
                             if(entityIn instanceof IronGolem){
-                                entityIn.hurt(DamageInit.ELECTRIC_FENCE, 20.0F);
+                                entityIn.hurt(DamageInit.ELECTRIC_FENCE, 50.0F);
                                 if (worldIn.isClientSide)
                                     doCollideAnimation(pos, worldIn, 1, ParticleTypes.ELECTRIC_SPARK, SoundInit.ELECTRIC_FENCE_SPARK, 0.75F, 50F);
                             }
 
+                            if (new Object() {
+                                public boolean checkGamemode(Entity _ent) {
+                                    if (_ent instanceof ServerPlayer _serverPlayer) {
+                                        return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+                                    } else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+                                        return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null && Minecraft.getInstance()
+                                                .getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+                                    }
+                                    return false;
+                                }
+                            }.checkGamemode(entityIn)) {
+                                    entityIn.isInvulnerableTo(DamageInit.ELECTRIC_FENCE);
+                                Electricfencemod.LOGGER.info("Player is In creative");
+                            }
+
                             if(_entGetArmor.getItemBySlot(EquipmentSlot.HEAD).getItem() == Items.IRON_HELMET && _entGetArmor.getItemBySlot(EquipmentSlot.CHEST).getItem() == Items.IRON_CHESTPLATE && _entGetArmor.getItemBySlot(EquipmentSlot.LEGS).getItem() == Items.IRON_LEGGINGS && _entGetArmor.getItemBySlot(EquipmentSlot.FEET).getItem() == Items.IRON_BOOTS){
-                                entityIn.hurt(DamageInit.ELECTRIC_FENCE, 10.0F);
+                                entityIn.hurt(DamageInit.ELECTRIC_FENCE, 25.0F);
                                 if (worldIn.isClientSide)
                                     doCollideAnimation(pos, worldIn, 1, ParticleTypes.ELECTRIC_SPARK, SoundInit.ELECTRIC_FENCE_SPARK,
                                             0.75F, 50F);
@@ -98,10 +118,6 @@ public class BasicElectricFence extends Block {
                 }
             }
         }
-
-
-
-
 
 
     private void doCollideAnimation(BlockPos pos, Level worldIn, int amount, SimpleParticleType particle,

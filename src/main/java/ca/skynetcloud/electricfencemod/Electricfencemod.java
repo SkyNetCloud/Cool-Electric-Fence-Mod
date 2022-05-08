@@ -2,6 +2,8 @@ package ca.skynetcloud.electricfencemod;
 
 import ca.skynetcloud.electricfencemod.world.level.block.BlockInit;
 import ca.skynetcloud.electricfencemod.world.item.ItemInit;
+import ca.skynetcloud.electricfencemod.world.level.block.ShockflowerBlock;
+import ca.skynetcloud.electricfencemod.world.level.levelgen.feature.FeatureInit;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,6 +32,7 @@ public class Electricfencemod {
 
         BlockInit.BLOCKS.register(FML);
         ItemInit.ITEMS.register(FML);
+        FeatureInit.FEATURE.register(FML);
     }
 
     //This used to be the PreInit
@@ -38,6 +41,7 @@ public class Electricfencemod {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        ShockflowerBlock.registerRenderLayer();
 
     }
 

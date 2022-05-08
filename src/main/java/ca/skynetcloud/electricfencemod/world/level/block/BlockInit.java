@@ -66,8 +66,10 @@ public class BlockInit {
     public static RegistryObject<Block> GREEN_Electric_FenceGate;
     public static RegistryObject<Block> RED_Electric_FenceGate;
     public static RegistryObject<Block> BLACK_Electric_FenceGate;
+    public static RegistryObject<Block> SHOCKFLOWER;
 
     static {
+        SHOCKFLOWER = BLOCKS.register("shock_flower", () -> new ShockflowerBlock());
         YELLOW_Electric_FenceGate = BLOCKS.register("yellow_electric_fence_gate", () -> new ElectricFenceGate());
         LIGHT_BLUE_Electric_FenceGate = BLOCKS.register("light_blue_electric_fence_gate", () -> new ElectricFenceGate());
         MAGENTA_Electric_FenceGate = BLOCKS.register("magenta_electric_fence_gate", () -> new ElectricFenceGate());

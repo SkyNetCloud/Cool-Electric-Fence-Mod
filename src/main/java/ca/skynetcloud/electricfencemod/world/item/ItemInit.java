@@ -65,8 +65,10 @@ public class ItemInit {
     public static RegistryObject<Item> RED_Electric_FenceGate;
     public static RegistryObject<Item> BLACK_Electric_FenceGate;
     public static RegistryObject<Item> wrench_tool;
+    public static RegistryObject<Item> shock_flower;
 
     static {
+        shock_flower = ITEMS.register("shock_flower", () -> new BlockItem(BlockInit.SHOCKFLOWER.get(), new Item.Properties().tab(Electricfencemod.electricfencemodTab.MAIN)));
         BLACK_Electric_FenceGate = ITEMS.register("black_electric_fence_gate", () -> new BlockItem(BlockInit.BLACK_Electric_FenceGate.get(), new Item.Properties().tab(Electricfencemod.electricfencemodTab.MAIN)));
         RED_Electric_FenceGate = ITEMS.register("red_electric_fence_gate", () -> new BlockItem(BlockInit.RED_Electric_FenceGate.get(), new Item.Properties().tab(Electricfencemod.electricfencemodTab.MAIN)));
         GREEN_Electric_FenceGate = ITEMS.register("green_electric_fence_gate", () -> new BlockItem(BlockInit.GREEN_Electric_FenceGate.get(), new Item.Properties().tab(Electricfencemod.electricfencemodTab.MAIN)));
