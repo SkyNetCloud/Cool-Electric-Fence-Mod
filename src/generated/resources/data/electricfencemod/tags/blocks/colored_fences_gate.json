@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "electricfencemod:black_electric_fence_gate",
+    "electricfencemod:red_electric_fence_gate",
+    "electricfencemod:blue_electric_fence_gate",
+    "electricfencemod:yellow_electric_fence_gate",
+    "electricfencemod:green_electric_fence_gate",
+    "electricfencemod:gray_electric_fence_gate",
+    "electricfencemod:light_blue_electric_fence_gate",
+    "electricfencemod:light_gray_electric_fence_gate",
+    "electricfencemod:lime_electric_fence_gate",
+    "electricfencemod:magenta_electric_fence_gate",
+    "electricfencemod:orange_electric_fence_gate",
+    "electricfencemod:pink_electric_fence_gate",
+    "electricfencemod:purple_electric_fence_gate",
+    "electricfencemod:cyan_electric_fence_gate",
+    "electricfencemod:white_electric_fence_gate",
+    "electricfencemod:brown_electric_fence_gate"
+  ]
+}
